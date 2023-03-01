@@ -59,10 +59,14 @@ let props = defineProps({
 let search = ref(props.filters.search);
 
 watch(search, value => {
-  Inertia.get('/users', { search: value }, {
-    preserveState: true,
-    replace: true
-  });
+  Inertia.get(
+    '/users',
+    { search: value },
+    {
+      preserveState: true,
+      replace: true,
+    }
+  );
 });
 </script>
 
