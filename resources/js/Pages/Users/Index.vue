@@ -1,7 +1,11 @@
 <template>
     <Head title="Users" />
     <div class="flex justify-between mb-6">
-      <h1 class="text-3xl">Users</h1>
+      <div class="flex items-center">
+        <h1 class="text-3xl">Users</h1>
+
+        <Link href="/users/create" class="text-blue-500 text-sm ml-3">New User</Link>
+      </div>
 
       <input v-model="search" type="text" placeholder="Search..." class="border px-2 rounded-lg" />
     </div>
@@ -38,7 +42,7 @@
 </template>
 
 <script>
-import Layout from "../Shared/Layout.vue";
+import Layout from "../../Shared/Layout.vue";
 export default {
     layout: Layout
 };
@@ -46,7 +50,7 @@ export default {
 
 <script setup>
 import { Inertia } from '@inertiajs/inertia';
-import Pagination from "../Shared/Pagination.vue";
+import Pagination from "../../Shared/Pagination.vue";
 import { ref, watch } from "vue";
 let props = defineProps({
   users: Object,
