@@ -52,22 +52,16 @@ export default {
 import { Inertia } from '@inertiajs/inertia';
 import Pagination from "../../Shared/Pagination.vue";
 import { ref, watch } from "vue";
+import debounce from "lodash/debounce";
 let props = defineProps({
   users: Object,
   filters: Object
 });
 let search = ref(props.filters.search);
 
-watch(search, value => {
-  Inertia.get(
-    '/users',
-    { search: value },
-    {
-      preserveState: true,
-      replace: true,
-    }
-  );
-});
+watch(search, debounce(function (value) {
+  Inertia.get('/users', { search: value }, { preserveState: true, replace: true });
+}, 300));
 </script>
 
 <!-- <script setup>
